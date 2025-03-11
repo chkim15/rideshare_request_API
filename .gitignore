@@ -1,19 +1,35 @@
+# Environment variables
+.env
+
+# Google Cloud credentials
+config/credentials/
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
 venv/
 ENV/
 env/
-env.bak/
-venv.bak/
-
-# Credentials
-*.json
-.env
-config/credentials/
 
 # IDE files
 .idea/
@@ -21,13 +37,9 @@ config/credentials/
 *.swp
 *.swo
 
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-
 # Logs
 *.log
 
-# Local BigQuery test data
-*.csv
+# OS specific files
+.DS_Store
+Thumbs.db
