@@ -118,14 +118,13 @@ def main():
             price_min = option.get("price_min", 0) / 100 if option.get("price_min") else 0
             price = f"${price_min:.2f}"
             
-            # Format wait time
-            wait_min = option.get("est_pickup_wait_time", {}).get("min", "?")
-            wait_time = f"{wait_min} min"
-            
-            # Format trip time
+            # Format wait time - convert seconds to minutes
+            wait_seconds = option.get("est_pickup_wait_time", {}).get("min", 0)
+            wait_time = f"{wait_seconds} seconds"
+
+            # Format trip time - convert seconds to minutes
             trip_seconds = option.get("est_time_after_pickup_till_dropoff", 0)
-            trip_minutes = trip_seconds // 60 if trip_seconds else 0
-            trip_time = f"{trip_minutes} min"
+            trip_time = f"{trip_seconds} seconds"
             
             print(f"{product:<20} {price:<15} {wait_time:<15} {trip_time:<15}")
     

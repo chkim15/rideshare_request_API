@@ -1,0 +1,501 @@
+{
+  "results": [
+    {
+      "cohort": "Local",
+      "prices": [
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 328,
+          "price_max": 2658,
+          "price_max_discounted": 2400,
+          "price_min": 2658,
+          "price_min_discounted": 2400,
+          "product": "Black VIP",
+          "provider": "UBER",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 303,
+          "price_max": 1570,
+          "price_max_discounted": 1312,
+          "price_min": 1570,
+          "price_min_discounted": 1312,
+          "product": "WAV",
+          "provider": "UBER",
+          "service_level": "WAV",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 480
+          },
+          "est_time_after_pickup_till_dropoff": 341,
+          "price_max": 2407,
+          "price_min": 2407,
+          "product": "Car Seat",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 180
+          },
+          "est_time_after_pickup_till_dropoff": 347,
+          "price_max": 1570,
+          "price_max_discounted": 1312,
+          "price_min": 1570,
+          "price_min_discounted": 1312,
+          "product": "Uber Green",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 180
+          },
+          "est_time_after_pickup_till_dropoff": 265,
+          "price_max": 2540,
+          "price_max_discounted": 2282,
+          "price_min": 2540,
+          "price_min_discounted": 2282,
+          "product": "UberXXL",
+          "provider": "UBER",
+          "service_level": "XL",
+          "surge_multiplier": 1.1
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 305,
+          "price_max": 1570,
+          "price_max_discounted": 1312,
+          "price_min": 1570,
+          "price_min_discounted": 1312,
+          "product": "UberX",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 333,
+          "price_max": 2027,
+          "price_max_discounted": 1769,
+          "price_min": 2027,
+          "price_min_discounted": 1769,
+          "product": "Uber Pet",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberPersonal",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 283,
+          "price_max": 1519,
+          "price_max_discounted": 1261,
+          "price_min": 1519,
+          "price_min_discounted": 1261,
+          "product": "Taxi",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 372,
+          "price_max": 1570,
+          "price_max_discounted": 1312,
+          "price_min": 1570,
+          "price_min_discounted": 1312,
+          "product": "UberX VIP",
+          "provider": "UBER",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 313,
+          "price_max": 2563,
+          "price_max_discounted": 2305,
+          "price_min": 2563,
+          "price_min_discounted": 2305,
+          "product": "Black",
+          "provider": "UBER",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 331,
+          "price_max": 1977,
+          "price_max_discounted": 1719,
+          "price_min": 1977,
+          "price_min_discounted": 1719,
+          "product": "Comfort",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.1
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 245,
+          "price_max": 1823,
+          "price_max_discounted": 1565,
+          "price_min": 1823,
+          "price_min_discounted": 1565,
+          "product": "UberX Priority",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 180
+          },
+          "est_time_after_pickup_till_dropoff": 403,
+          "price_max": 1170,
+          "price_max_discounted": 912,
+          "price_min": 1170,
+          "price_min_discounted": 912,
+          "product": "UberX Share",
+          "provider": "UBER",
+          "service_level": "Pool",
+          "surge_multiplier": 1.2
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 352,
+          "price_max": 2046,
+          "price_max_discounted": 1788,
+          "price_min": 2046,
+          "price_min_discounted": 1788,
+          "product": "Comfort Electric",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.1
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "max": 660,
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 920,
+          "price_max": 1486,
+          "price_max_discounted": 1228,
+          "price_min": 1486,
+          "price_min_discounted": 1228,
+          "product": "UberX Saver",
+          "provider": "UBER",
+          "service_level": "Standard",
+          "surge_multiplier": 1.1
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 409,
+          "price_max": 2189,
+          "price_max_discounted": 1931,
+          "price_min": 2189,
+          "price_min_discounted": 1931,
+          "product": "UberXL",
+          "provider": "UBER",
+          "service_level": "XL",
+          "surge_multiplier": 1.1
+        },
+        {
+          "currency": "USD",
+          "discount_type": "UberOne",
+          "distance_meters": 1212,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 269,
+          "price_max": 3867,
+          "price_max_discounted": 3609,
+          "price_min": 3867,
+          "price_min_discounted": 3609,
+          "product": "Black SUV",
+          "provider": "UBER",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 300,
+          "price_max": 1416,
+          "price_max_discounted": 1137,
+          "price_min": 1416,
+          "price_min_discounted": 1137,
+          "product": "Lyft Priority Pickup",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 360,
+          "price_max": 1196,
+          "price_max_discounted": 1081,
+          "price_min": 1196,
+          "price_min_discounted": 1081,
+          "product": "Lyft Standard",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 360,
+          "price_max": 1568,
+          "price_max_discounted": 1416,
+          "price_min": 1568,
+          "price_min_discounted": 1416,
+          "product": "Lyft XL",
+          "provider": "LYFT",
+          "service_level": "XL",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 360,
+          "price_max": 1396,
+          "price_max_discounted": 1261,
+          "price_min": 1396,
+          "price_min_discounted": 1261,
+          "product": "Lyft Extra Comfort",
+          "provider": "LYFT",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "max": 600,
+            "min": 0
+          },
+          "est_time_after_pickup_till_dropoff": 360,
+          "price_max": 1099,
+          "price_min": 1099,
+          "product": "Lyft Wait & Save",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 240
+          },
+          "est_time_after_pickup_till_dropoff": 1020,
+          "price_max": 1196,
+          "price_max_discounted": 1081,
+          "price_min": 1196,
+          "price_min_discounted": 1081,
+          "product": "Lyft Wheelchair",
+          "provider": "LYFT",
+          "service_level": "WAV",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 360,
+          "price_max": 1639,
+          "price_max_discounted": 1481,
+          "price_min": 1639,
+          "price_min_discounted": 1481,
+          "product": "Lyft Pet",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 120
+          },
+          "est_time_after_pickup_till_dropoff": 420,
+          "price_max": 3049,
+          "price_max_discounted": 2608,
+          "price_min": 3049,
+          "price_min_discounted": 2608,
+          "product": "Lyft Black SUV",
+          "provider": "LYFT",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 600
+          },
+          "est_time_after_pickup_till_dropoff": 840,
+          "price_max": 2194,
+          "price_max_discounted": 2085,
+          "price_min": 2194,
+          "price_min_discounted": 2085,
+          "product": "Lyft Car seat",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "Unknown",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "max": 900,
+            "min": 0
+          },
+          "est_time_after_pickup_till_dropoff": 1020,
+          "price_max": 1099,
+          "price_max_discounted": 1045,
+          "price_min": 1099,
+          "price_min_discounted": 1045,
+          "product": "Lyft Wheelchair",
+          "provider": "LYFT",
+          "service_level": "WAV",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 180
+          },
+          "est_time_after_pickup_till_dropoff": 420,
+          "price_max": 1196,
+          "price_max_discounted": 1081,
+          "price_min": 1196,
+          "price_min_discounted": 1081,
+          "product": "Lyft Green",
+          "provider": "LYFT",
+          "service_level": "Standard",
+          "surge_multiplier": 1.0
+        },
+        {
+          "currency": "USD",
+          "discount_type": "LyftPink",
+          "distance_meters": 1190,
+          "est_pickup_wait_time": {
+            "min": 60
+          },
+          "est_time_after_pickup_till_dropoff": 300,
+          "price_max": 2001,
+          "price_max_discounted": 1711,
+          "price_min": 2001,
+          "price_min_discounted": 1711,
+          "product": "Lyft Black",
+          "provider": "LYFT",
+          "service_level": "Luxury",
+          "surge_multiplier": 1.0
+        }
+      ]
+    }
+  ],
+  "search_id": "69562349-9df8-49d4-a0e9-f3afeeda7b4d",
+  "timestamp": "2025-03-10T23:40:54.364277946-04:00[America/New_York]"
+}
