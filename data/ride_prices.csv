@@ -1,0 +1,48 @@
+date,time,search_id,pickup,destination,provider,product,service_level,price_min_dollars,price_max_dollars,wait_min_seconds,wait_max_seconds,trip_seconds,distance_meters,surge_multiplier
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,WAV,WAV,92.07,92.07,360,,2497,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Car Seat,Standard,101.56,101.56,0,,2721,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Uber Green,Standard,92.07,92.07,360,,2536,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberXXL,XL,123.81,123.81,360,,2511,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberX,Standard,92.07,92.07,120,,2531,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Uber Pet,Standard,96.53,96.53,120,,2551,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Black,Luxury,115.77,115.77,60,,2538,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Comfort,Standard,95.90,95.90,120,,2533,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberX Priority,Standard,114.48,114.48,60,,2531,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberX Share,Pool,74.78,74.78,240,,2692,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Comfort Electric,Standard,99.36,99.36,180,,2572,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberX Saver,Standard,85.95,85.95,180,720,3152,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,UberXL,XL,105.95,105.95,180,,2561,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,UBER,Black SUV,Luxury,160.30,160.30,120,,2504,28115,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Priority Pickup,Standard,84.98,84.98,240,,2460,28694,1.0199999809265137
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Standard,Standard,82.75,82.75,300,,2520,28694,1.0199999809265137
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Wait & Save,Standard,79.99,79.99,0,900,2520,28694,1.0199999809265137
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Extra Comfort,Luxury,90.04,90.04,300,,2520,28694,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Car seat,Standard,92.50,92.50,0,,3420,28694,1.0199999809265137
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Black,Luxury,100.01,100.01,120,,2340,28694,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft XL,XL,99.45,99.45,300,,2520,28694,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Wheelchair,WAV,82.75,82.75,540,,3240,28694,1.0199999809265137
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Black SUV,Luxury,125.59,125.59,60,,2280,28694,1.0
+2025-03-11,22:29:22,e15eb0e8-c4f4-47fe-be30-2cfbafcef0ac,Times Square,JFK Airport,LYFT,Lyft Pet,Standard,86.96,86.96,300,,2460,28694,1.0199999809265137
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,UberX VIP,Luxury,69.29,69.29,120,,1608,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Black,Luxury,103.42,103.42,120,,1627,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Black VIP,Luxury,107.81,107.81,120,,1653,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Comfort,Standard,82.31,82.31,240,,1602,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,WAV,WAV,69.29,69.29,360,,1639,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Comfort Electric,Standard,85.23,85.23,240,,1626,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Uber Green,Standard,69.29,69.29,300,,1581,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,UberXXL,XL,107.49,107.49,300,,1601,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,UberX,Standard,69.29,69.29,120,,1641,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Uber Pet,Standard,73.75,73.75,300,,1603,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,UberXL,XL,92.27,92.27,120,,1638,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,UBER,Black SUV,Luxury,144.93,144.93,180,,1593,15296,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Priority Pickup,Standard,60.89,60.89,300,,1920,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Standard,Standard,57.99,57.99,420,,2040,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Black SUV,Luxury,99.89,99.89,300,,1860,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft XL,XL,78.39,78.39,420,,2040,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Extra Comfort,Luxury,65.28,65.28,300,,1920,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Wheelchair,WAV,57.99,57.99,960,,3060,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Wheelchair,WAV,57.49,57.49,0,1260,3060,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Pet,Standard,62.50,62.50,420,,2040,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Car seat,Standard,68.04,68.04,960,,2580,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Black,Luxury,78.96,78.96,180,,1800,15594,1.0
+2025-03-11,22:29:52,829d1636-b92a-44cc-a69b-64824c429125,LaGuardia Airport,Hudson Yards,LYFT,Lyft Green,Standard,57.99,57.99,0,,2040,15594,1.0

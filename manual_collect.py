@@ -1,10 +1,23 @@
-#!/usr/bin/env python3
+def save_results_to_json(data, route_name):
+    """Save API response to a JSON file"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"data_{route_name.replace(' ', '_')}_{timestamp}.json"
+    
+    os.makedirs("data", exist_ok=True)
+    filepath = os.path.join("data", filename)
+    
+    with open(filepath, 'w') as f:
+        json.dump(data, f, indent=2)
+    
+    print(f"Data saved to {filepath}")
+    return filepath#!/usr/bin/env python3
 """
 Simplified manual collection script to avoid import issues.
 This script directly uses the API client without complex imports.
 """
 import os
 import json
+import csv
 import time
 from datetime import datetime
 from dotenv import load_dotenv
@@ -56,19 +69,95 @@ def get_prices(api_key, api_secret, pickup_lat, pickup_lng, dest_lat, dest_lng):
         print(f"Error fetching ride prices: {e}")
         return None
 
-def save_results_to_file(data, route_name):
-    """Save API response to a JSON file"""
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"data_{route_name.replace(' ', '_')}_{timestamp}.json"
-    
+def save_results_to_csv(data, pickup_name, dest_name):
+    """Save API response to CSV file, appending to existing file if it exists"""
+    # Create data directory if it doesn't exist
     os.makedirs("data", exist_ok=True)
-    filepath = os.path.join("data", filename)
     
-    with open(filepath, 'w') as f:
-        json.dump(data, f, indent=2)
+    # CSV filename - single file for all results
+    filepath = os.path.join("data", "ride_prices.csv")
+    file_exists = os.path.isfile(filepath)
     
-    print(f"Data saved to {filepath}")
-    return filepath
+    # Get the current time
+    timestamp = datetime.now()
+    date_str = timestamp.strftime("%Y-%m-%d")
+    time_str = timestamp.strftime("%H:%M:%S")
+    
+    # Extract search ID
+    search_id = data.get("search_id", "")
+    
+    # Parse the results
+    results = data.get("results", [])
+    if not results or not results[0].get("prices"):
+        print("No ride options to save")
+        return None
+    
+    # Prepare rows for CSV
+    rows = []
+    for price in results[0].get("prices", []):
+        provider = price.get("provider", "")
+        product = price.get("product", "")
+        service_level = price.get("service_level", "")
+        
+        # Price in dollars
+        price_min = price.get("price_min", 0) / 100 if price.get("price_min") is not None else 0
+        price_max = price.get("price_max", 0) / 100 if price.get("price_max") is not None else 0
+        
+        # Wait time in seconds
+        wait_min = price.get("est_pickup_wait_time", {}).get("min", 0)
+        wait_max = price.get("est_pickup_wait_time", {}).get("max", 0)
+        
+        # Trip details
+        trip_seconds = price.get("est_time_after_pickup_till_dropoff", 0)
+        distance_meters = price.get("distance_meters", 0)
+        surge = price.get("surge_multiplier", 1.0)
+        
+        # Create a row
+        row = {
+            "date": date_str,
+            "time": time_str,
+            "search_id": search_id,
+            "pickup": pickup_name,
+            "destination": dest_name,
+            "provider": provider,
+            "product": product,
+            "service_level": service_level,
+            "price_min_dollars": f"{price_min:.2f}",
+            "price_max_dollars": f"{price_max:.2f}",
+            "wait_min_seconds": wait_min,
+            "wait_max_seconds": wait_max if wait_max else "",
+            "trip_seconds": trip_seconds,
+            "distance_meters": distance_meters,
+            "surge_multiplier": surge
+        }
+        rows.append(row)
+    
+    # Define fieldnames (columns)
+    fieldnames = [
+        "date", "time", "search_id", "pickup", "destination", 
+        "provider", "product", "service_level", 
+        "price_min_dollars", "price_max_dollars", 
+        "wait_min_seconds", "wait_max_seconds", 
+        "trip_seconds", "distance_meters", "surge_multiplier"
+    ]
+    
+    # Write to CSV file
+    try:
+        with open(filepath, mode='a', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            
+            # Write header only if file doesn't exist
+            if not file_exists:
+                writer.writeheader()
+            
+            # Write all rows
+            writer.writerows(rows)
+        
+        print(f"Data appended to {filepath}")
+        return filepath
+    except Exception as e:
+        print(f"Error saving to CSV: {e}")
+        return None
 
 def display_ride_options(response_data):
     """Display ride options in a readable format"""
@@ -248,17 +337,25 @@ def main():
         # Ask what to do with the results
         print("\nWhat would you like to do with these results?")
         print("1. Save to JSON file")
-        print("2. Nothing (continue)")
+        print("2. Save to CSV file (append)")
+        print("3. Save to both JSON and CSV")
+        print("4. Nothing (continue)")
         
-        action = input("\nEnter your choice (1-2): ")
+        action = input("\nEnter your choice (1-4): ")
         
-        if action == "1":
+        if action in ("1", "3"):
             # Save to JSON file
             if choice == "1":
                 route_name = f"{pickup['name']}_to_{destination['name']}"
             else:
                 route_name = "custom_route"
-            save_results_to_file(response, route_name)
+            save_results_to_json(response, route_name)
+        
+        if action in ("2", "3"):
+            # Save to CSV file
+            pickup_name = pickup.get('name', f"Custom ({pickup['lat']}, {pickup['lng']})")
+            dest_name = destination.get('name', f"Custom ({destination['lat']}, {destination['lng']})")
+            save_results_to_csv(response, pickup_name, dest_name)
         
         # Ask if user wants to continue
         again = input("\nLook up another route? (y/n): ")
