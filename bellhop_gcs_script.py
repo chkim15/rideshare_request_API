@@ -117,8 +117,8 @@ def get_place_by_id(sample_places, place_id):
             return place
     return None
 
-def get_prices(api_key, api_secret, pickup_lat, pickup_lng, dest_lat, dest_lng):
-    """Make API call to Bellhop to get ride prices"""
+def get_prices(api_key, api_secret, pickup_lat, pickup_lng, dest_lat, dest_lng, max_retries=5):
+    """Make API call to Bellhop to get ride prices with retry logic for rate limiting"""
     headers = {
         "accept": "application/json",
         "X-API-KEY": api_key,
@@ -139,13 +139,36 @@ def get_prices(api_key, api_secret, pickup_lat, pickup_lng, dest_lat, dest_lng):
     
     url = "https://api.bellhop.me/api/rich-intelligent-pricing"
     
-    try:
-        response = requests.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error fetching ride prices: {e}")
-        return None
+    # Exponential backoff parameters
+    base_delay = 10  # Start with a 10-second delay
+    
+    for attempt in range(max_retries):
+        try:
+            response = requests.post(url, headers=headers, json=payload)
+            
+            # If we get a rate limit error, wait and retry
+            if response.status_code == 429:
+                retry_delay = base_delay * (2 ** attempt)  # Exponential backoff
+                logger.warning(f"Rate limit hit. Retrying in {retry_delay} seconds... (Attempt {attempt+1}/{max_retries})")
+                time.sleep(retry_delay)
+                continue
+                
+            response.raise_for_status()
+            return response.json()
+            
+        except requests.exceptions.HTTPError as e:
+            if response.status_code == 429 and attempt < max_retries - 1:
+                # This case is handled above, just continue the loop
+                continue
+            logger.error(f"HTTP error fetching ride prices: {e}")
+            return None
+            
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching ride prices: {e}")
+            return None
+            
+    logger.error(f"Failed to get prices after {max_retries} attempts due to rate limiting")
+    return None
 
 def save_results_to_gcs_json(client, data, sample_type, pair_id):
     """Save API response to a JSON file in Google Cloud Storage"""
@@ -313,7 +336,7 @@ def process_pair(api_key, api_secret, gcs_client, sample_type, pair, places):
     # Log collection attempt
     logger.info(f"Collecting {sample_type} - Pair {pair['id']}: {origin['name']} to {destination['name']}")
     
-    # Get price data
+    # Get price data with retry logic
     response = get_prices(
         api_key,
         api_secret,
@@ -331,8 +354,9 @@ def process_pair(api_key, api_secret, gcs_client, sample_type, pair, places):
     save_results_to_gcs_json(gcs_client, response, sample_type, pair['id'])
     save_results_to_csv(gcs_client, response, sample_type, origin['name'], destination['name'])
     
-    # Add a small delay between API calls to avoid rate limiting
-    time.sleep(2)
+    # Add a longer delay between API calls to avoid rate limiting
+    logger.info(f"Waiting 15 seconds before next API call to avoid rate limiting...")
+    time.sleep(15)
 
 def collect_all_samples():
     """Collect data for all sample pairs"""
@@ -354,13 +378,38 @@ def collect_all_samples():
         logger.error(f"Failed to initialize GCS: {e}")
         return
     
-    # Process Sample 1 - Prestigious routes
-    for pair in SAMPLE1_PAIRS:
-        process_pair(api_key, api_secret, gcs_client, "Sample1", pair, SAMPLE1_PLACES)
-    
-    # Process Sample 2 - Random routes with similar distances
-    for pair in SAMPLE2_PAIRS:
-        process_pair(api_key, api_secret, gcs_client, "Sample2", pair, SAMPLE2_PLACES)
+    # Process pairs with error handling and splits
+    try:
+        # Process Sample 1 - Prestigious routes
+        logger.info("Starting Sample 1 collection...")
+        
+        for i, pair in enumerate(SAMPLE1_PAIRS):
+            try:
+                process_pair(api_key, api_secret, gcs_client, "Sample1", pair, SAMPLE1_PLACES)
+                logger.info(f"Successfully processed Sample1 pair {pair['id']} ({i+1}/{len(SAMPLE1_PAIRS)})")
+            except Exception as e:
+                logger.error(f"Error processing Sample1 pair {pair['id']}: {e}")
+                # Continue with next pair instead of exiting
+                continue
+        
+        # Add a longer delay between Sample 1 and Sample 2 to recover from potential rate limiting
+        logger.info("Completed Sample 1. Waiting 60 seconds before starting Sample 2...")
+        time.sleep(60)
+        
+        # Process Sample 2 - Random routes with similar distances
+        logger.info("Starting Sample 2 collection...")
+        
+        for i, pair in enumerate(SAMPLE2_PAIRS):
+            try:
+                process_pair(api_key, api_secret, gcs_client, "Sample2", pair, SAMPLE2_PLACES)
+                logger.info(f"Successfully processed Sample2 pair {pair['id']} ({i+1}/{len(SAMPLE2_PAIRS)})")
+            except Exception as e:
+                logger.error(f"Error processing Sample2 pair {pair['id']}: {e}")
+                # Continue with next pair instead of exiting
+                continue
+                
+    except Exception as e:
+        logger.error(f"Unexpected error in collection process: {e}")
     
     end_time = datetime.now()
     duration = (end_time - start_time).total_seconds()

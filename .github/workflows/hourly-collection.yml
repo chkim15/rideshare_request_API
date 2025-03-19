@@ -1,13 +1,16 @@
-name: Hourly Bellhop Data Collection
+name: Bellhop Data Collection Every 3 Hours
 
 on:
   # Run immediately when committed to repository
   push:
     branches: [ main ]
   
-  # Run hourly
+  # Run every 3 hours at 15 minutes past the hour
   schedule:
-    - cron: '0 * * * *'  # Run at the top of every hour
+    - cron: '15 */3 * * *'  # Runs at 00:15, 03:15, 06:15, 09:15, 12:15, 15:15, 18:15, 21:15
+  
+  # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
   collect-data:
@@ -37,4 +40,12 @@ jobs:
         BELLHOP_API_KEY: ${{ secrets.BELLHOP_API_KEY }}
         BELLHOP_API_SECRET: ${{ secrets.BELLHOP_API_SECRET }}
         GCS_BUCKET_NAME: ${{ secrets.GCS_BUCKET_NAME }}
-      run: python bellhop_gcs_script.py
+      run: |
+        # Add a random delay between 0-60 seconds to further avoid rate limiting issues when multiple runs happen at same time
+        RANDOM_DELAY=$((RANDOM % 60))
+        echo "Adding a random delay of $RANDOM_DELAY seconds before starting..."
+        sleep $RANDOM_DELAY
+        
+        # Run the script with verbose logging
+        python bellhop_gcs_script.py
+      timeout-minutes: 30  # Increase the timeout to 30 minutes
