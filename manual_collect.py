@@ -25,16 +25,31 @@ import requests
 
 # Define popular places that can be used for pickup or destination
 POPULAR_PLACES = [
-    {"id": 1, "name": "Times Square", "lat": 40.758896, "lng": -73.985130},
-    {"id": 2, "name": "Empire State Building", "lat": 40.748817, "lng": -73.985428},
-    {"id": 3, "name": "Grand Central Terminal", "lat": 40.7527, "lng": -73.9772},
-    {"id": 4, "name": "JFK Airport", "lat": 40.6413, "lng": -73.7781},
-    {"id": 5, "name": "LaGuardia Airport", "lat": 40.7769, "lng": -73.8740},
-    {"id": 6, "name": "Central Park", "lat": 40.7812, "lng": -73.9665},
-    {"id": 7, "name": "Wall Street", "lat": 40.7068, "lng": -74.0089},
-    {"id": 8, "name": "Brooklyn Bridge", "lat": 40.7061, "lng": -73.9969},
-    {"id": 9, "name": "Williamsburg", "lat": 40.7081, "lng": -73.9571},
-    {"id": 10, "name": "Hudson Yards", "lat": 40.7539, "lng": -74.0024}
+    # Luxury Residences
+    {"id": 1, "name": "15 Central Park West", "lat": 40.7690, "lng": -73.9814},
+    {"id": 2, "name": "Central Park Tower", "lat": 40.7665, "lng": -73.9806},
+    {"id": 3, "name": "432 Park Avenue", "lat": 40.7616, "lng": -73.9719},
+    {"id": 4, "name": "15 Hudson Yards", "lat": 40.7544, "lng": -74.0021},
+    {"id": 5, "name": "One57 (157 W 57th St)", "lat": 40.7660, "lng": -73.9794},
+    {"id": 6, "name": "220 Central Park South", "lat": 40.7669, "lng": -73.9806},
+    
+    # Midtown Luxury Hotels
+    {"id": 7, "name": "The St. Regis New York", "lat": 40.7613, "lng": -73.9745},
+    {"id": 8, "name": "Four Seasons Hotel New York", "lat": 40.7627, "lng": -73.9694},
+    {"id": 9, "name": "The Ritz-Carlton New York", "lat": 40.7651, "lng": -73.9765},
+    
+    # Downtown Luxury Hotels
+    {"id": 10, "name": "The Beekman (Thompson Hotel)", "lat": 40.7112, "lng": -74.0066},
+    {"id": 11, "name": "Four Seasons Hotel New York Downtown", "lat": 40.7126, "lng": -74.0099},
+    
+    # Corporate Headquarters
+    {"id": 12, "name": "Goldman Sachs HQ", "lat": 40.7143, "lng": -74.0138},
+    {"id": 13, "name": "JP Morgan HQ", "lat": 40.7549, "lng": -73.9772},
+    {"id": 14, "name": "CitiGroup HQ", "lat": 40.7204, "lng": -74.0125},
+    {"id": 15, "name": "McKinsey (WTC)", "lat": 40.7123, "lng": -74.0110},
+    {"id": 16, "name": "BCG (Hudson Yards)", "lat": 40.7537, "lng": -74.0024},
+    {"id": 17, "name": "Google NYC", "lat": 40.7414, "lng": -74.0022},
+    {"id": 18, "name": "Skadden Arps", "lat": 40.7515, "lng": -73.9974}
 ]
 
 def get_prices(api_key, api_secret, pickup_lat, pickup_lng, dest_lat, dest_lng):
