@@ -5,9 +5,9 @@ on:
   push:
     branches: [ main ]
   
-  # Run every 3 hours at 15 minutes past the hour
+  # Run every 2 hours at 15 minutes past the hour
   schedule:
-    - cron: '15 */3 * * *'  # Runs at 00:15, 03:15, 06:15, 09:15, 12:15, 15:15, 18:15, 21:15
+    - cron: '15 */2 * * *'  # Runs at 00:15, 02:15, 04:15, 06:15, 08:15, 10:15, 12:15, 14:15, 16:15, 18:15, 20:15, 22:15
   
   # Allow manual triggering
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install google-cloud-storage requests
 
-    - name: Setup Google Cloud Auth
+    - name: Setup G oogle Cloud Auth
       uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_CREDENTIALS }}
