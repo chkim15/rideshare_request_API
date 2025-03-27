@@ -269,6 +269,10 @@ def save_results_to_csv(client, data, sample_type, pickup_name, dest_name):
         # Price in dollars
         price_min = price.get("price_min", 0) / 100 if price.get("price_min") is not None else 0
         price_max = price.get("price_max", 0) / 100 if price.get("price_max") is not None else 0
+
+        # Discounted Price in dollars
+        price_min_discounted = price.get("price_min_discounted", 0) / 100 if price.get("price_min_discounted") is not None else 0
+        price_max_discounted = price.get("price_max_discounted", 0) / 100 if price.get("price_max_discounted") is not None else 0
         
         # Wait time in seconds
         wait_min = price.get("est_pickup_wait_time", {}).get("min", 0)
@@ -290,8 +294,10 @@ def save_results_to_csv(client, data, sample_type, pickup_name, dest_name):
             "provider": provider,
             "product": product,
             "service_level": service_level,
-            "price_min_dollars": f"{price_min:.2f}",
-            "price_max_dollars": f"{price_max:.2f}",
+            "price_min": f"{price_min:.2f}",
+            "price_max": f"{price_max:.2f}",
+            "price_min_discounted": f"{price_min_discounted:.2f}",
+            "price_max_discounted": f"{price_max_discounted:.2f}",
             "wait_min_seconds": wait_min,
             "wait_max_seconds": wait_max if wait_max else "",
             "trip_seconds": trip_seconds,
@@ -304,7 +310,7 @@ def save_results_to_csv(client, data, sample_type, pickup_name, dest_name):
     fieldnames = [
         "date", "time", "search_id", "sample_type", "pickup", "destination", 
         "provider", "product", "service_level", 
-        "price_min_dollars", "price_max_dollars", 
+        "price_min", "price_max", "price_min_discounted", "price_max_discounted",
         "wait_min_seconds", "wait_max_seconds", 
         "trip_seconds", "distance_meters", "surge_multiplier"
     ]
