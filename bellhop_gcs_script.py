@@ -101,6 +101,30 @@ SAMPLE2_PLACES = [
     {"id": 20, "name": "Random Destination 10", "lat": 40.748841, "lng": -73.993437},
 ]
 
+# Sample 3: NYC Residential to Airport Routes
+SAMPLE3_PAIRS = [
+    {"id": 1, "origin_id": 1, "destination_id": 2},    # Columbus Ave to JFK
+    {"id": 2, "origin_id": 1, "destination_id": 3},    # Columbus Ave to Newark
+    {"id": 3, "origin_id": 1, "destination_id": 4},    # Columbus Ave to LaGuardia
+    {"id": 4, "origin_id": 5, "destination_id": 2},    # Central Park West to JFK
+    {"id": 5, "origin_id": 5, "destination_id": 3},    # Central Park West to Newark
+    {"id": 6, "origin_id": 5, "destination_id": 4},    # Central Park West to LaGuardia
+    {"id": 7, "origin_id": 2, "destination_id": 1},    # JFK to Columbus Ave
+    {"id": 8, "origin_id": 3, "destination_id": 1},    # Newark to Columbus Ave
+    {"id": 9, "origin_id": 4, "destination_id": 1},    # LaGuardia to Columbus Ave
+    {"id": 10, "origin_id": 2, "destination_id": 5},   # JFK to Central Park West
+    {"id": 11, "origin_id": 3, "destination_id": 5},   # Newark to Central Park West
+    {"id": 12, "origin_id": 4, "destination_id": 5},   # LaGuardia to Central Park West
+]
+
+SAMPLE3_PLACES = [
+    {"id": 1, "name": "795 Columbus Ave", "lat": 40.793682, "lng": -73.962427},
+    {"id": 2, "name": "JFK Airport", "lat": 40.641311, "lng": -73.778139},
+    {"id": 3, "name": "Newark Airport", "lat": 40.689531, "lng": -74.174462},
+    {"id": 4, "name": "LaGuardia Airport", "lat": 40.775997, "lng": -73.872457},
+    {"id": 5, "name": "15 Central Park West", "lat": 40.769000, "lng": -73.981400},
+]
+
 def initialize_gcs_client():
     """Initialize Google Cloud Storage client"""
     try:
@@ -411,6 +435,22 @@ def collect_all_samples():
                 logger.info(f"Successfully processed Sample2 pair {pair['id']} ({i+1}/{len(SAMPLE2_PAIRS)})")
             except Exception as e:
                 logger.error(f"Error processing Sample2 pair {pair['id']}: {e}")
+                # Continue with next pair instead of exiting
+                continue
+
+        # Add this after processing Sample 2
+        logger.info("Completed Sample 2. Waiting 60 seconds before starting Sample 3...")
+        time.sleep(60)
+
+        # Process Sample 3 - NYC Residential to Airport Routes
+        logger.info("Starting Sample 3 collection...")
+
+        for i, pair in enumerate(SAMPLE3_PAIRS):
+            try:
+                process_pair(api_key, api_secret, gcs_client, "Sample3", pair, SAMPLE3_PLACES)
+                logger.info(f"Successfully processed Sample3 pair {pair['id']} ({i+1}/{len(SAMPLE3_PAIRS)})")
+            except Exception as e:
+                logger.error(f"Error processing Sample3 pair {pair['id']}: {e}")
                 # Continue with next pair instead of exiting
                 continue
                 
