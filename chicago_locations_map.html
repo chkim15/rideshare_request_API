@@ -1,0 +1,142 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Chicago Locations Map</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>
+            #map {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .info-panel {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 1;
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 6px rgba(0,0,0,.3);
+                max-height: 80%;
+                overflow-y: auto;
+                max-width: 300px;
+            }
+            .location {
+                margin-bottom: 10px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 5px;
+            }
+            .high-income {
+                color: green;
+                font-weight: bold;
+            }
+            .random {
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div class="info-panel">
+            <h2>Chicago Locations</h2>
+            <div id="locations-list"></div>
+        </div>
+        <script>
+            var locations = [{"name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.89566, "lng": -87.624439, "type": "high_income"}, {"name": "JP Morgan, 10 S Dearborn St., Chicago", "lat": 41.881345, "lng": -87.629798, "type": "high_income"}, {"name": "Park Hyatt, 108 East Superior Street, Chicago", "lat": 41.89566, "lng": -87.624439, "type": "high_income"}, {"name": "CME Group, 20 South Wacker Drive, Chicago", "lat": 41.882007, "lng": -87.636333, "type": "high_income"}, {"name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.89566, "lng": -87.624439, "type": "high_income"}, {"name": "233 S Wacker Dr, Chicago, IL 60606", "lat": 41.878112, "lng": -87.636404, "type": "high_income"}, {"name": "Four Seasons Hotel, 120 East Delaware Place, Chicago", "lat": 41.899036, "lng": -87.625301, "type": "high_income"}, {"name": "Mondelez Intl., 905 W Fulton Market, Chicago", "lat": 41.8867, "lng": -87.6502, "type": "high_income"}, {"name": "850 North Lake Shore Drive, Chicago", "lat": 41.89907, "lng": -87.616897, "type": "high_income"}, {"name": "234 S Wacker Dr, Chicago, IL 60606", "lat": 41.87791, "lng": -87.636335, "type": "high_income"}, {"name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.89566, "lng": -87.624439, "type": "high_income"}, {"name": "McDonald's 110 N Carpenter St, Chicago", "lat": 41.883946, "lng": -87.653935, "type": "high_income"}, {"name": "1837 North Fremont St., Chicago", "lat": 41.915608, "lng": -87.651639, "type": "high_income"}, {"name": "CME Group, 20 S Wacker Dr, Chicago, IL 60606", "lat": 41.882007, "lng": -87.636333, "type": "high_income"}, {"name": "2350 North Orchard St., Chicago", "lat": 41.924319, "lng": -87.644917, "type": "high_income"}, {"name": "233 S Wacker Dr, Chicago, IL 60606", "lat": 41.878112, "lng": -87.636404, "type": "high_income"}, {"name": "2350 North Orchard St., Chicago", "lat": 41.924319, "lng": -87.644917, "type": "high_income"}, {"name": "Jones, Day 10 N Wacker Drive, Chicago", "lat": 41.881973, "lng": -87.636819, "type": "high_income"}, {"name": "Marriott Marquis", "lat": 41.853056, "lng": -87.618054, "type": "high_income"}, {"name": "2350 North Orchard St., Chicago", "lat": 41.924319, "lng": -87.644917, "type": "high_income"}, {"name": "120 S State St #205, Chicago", "lat": 41.879639, "lng": -87.627776, "type": "random"}, {"name": "920 W Randolph St, Chicago", "lat": 41.884512, "lng": -87.650701, "type": "random"}, {"name": "421 West Huron St., Chicago", "lat": 41.894621, "lng": -87.638967, "type": "random"}, {"name": "One S. Dearborn S., Chicago", "lat": 41.881596, "lng": -87.629127, "type": "random"}, {"name": "1950 West 21 Street, Chicago", "lat": 41.854045, "lng": -87.673898, "type": "random"}, {"name": "1002 S Racine Ave, Chicago", "lat": 41.868865, "lng": -87.656484, "type": "random"}, {"name": "698-664 N Hoyne Ave, Chicago", "lat": 41.894312, "lng": -87.678943, "type": "random"}, {"name": "815-899 N Lawndale Ave, Chicago", "lat": 41.896773, "lng": -87.719066, "type": "random"}, {"name": "1063 W. Polk St., Chicago", "lat": 41.8717, "lng": -87.655077, "type": "random"}, {"name": "37 E Madison St, Chicago", "lat": 41.881726, "lng": -87.626308, "type": "random"}, {"name": "535-599 N Paulina St, Chicago", "lat": 41.891765, "lng": -87.670266, "type": "random"}, {"name": "4164-4198 W Augusta Blvd, Chicago", "lat": 41.899223, "lng": -87.731318, "type": "random"}, {"name": "342 W Carroll Ave, Chicago", "lat": 41.886223, "lng": -87.636915, "type": "random"}, {"name": "1479 S Clark St, Chicago", "lat": 41.864094, "lng": -87.630851, "type": "random"}, {"name": "185 W Washington St, Chicago", "lat": 41.883157, "lng": -87.633614, "type": "random"}, {"name": "2435 W Roosevelt Rd, Chicago, IL 60608", "lat": 41.866438, "lng": -87.687916, "type": "random"}, {"name": "2533 W Pope John Paul II Dr, Chicago", "lat": 41.851123, "lng": -87.688024, "type": "random"}, {"name": "1460 S Clark St, Chicago", "lat": 41.864369, "lng": -87.6307, "type": "random"}, {"name": "3240 N Kimball Ave, Chicago", "lat": 41.940731, "lng": -87.713492, "type": "random"}, {"name": "615 W. Madison Ave., Chicago", "lat": 41.881803, "lng": -87.643651, "type": "random"}];
+            
+            function initMap() {
+                var bounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12
+                });
+                
+                var infoWindow = new google.maps.InfoWindow();
+                var locationsList = document.getElementById('locations-list');
+                
+                // Add markers for high income places
+                var highIncomeLocations = locations.filter(loc => loc.type === 'high_income');
+                for (var i = 0; i < highIncomeLocations.length; i++) {
+                    var location = highIncomeLocations[i];
+                    var marker = new google.maps.Marker({
+                        position: { lat: location.lat, lng: location.lng },
+                        map: map,
+                        title: location.name,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    });
+                    
+                    bounds.extend(marker.getPosition());
+                    
+                    // Add info window 
+                    (function(marker, location) {
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.setContent(
+                                '<div><strong>' + location.name + '</strong><br>' +
+                                'Type: High Income<br>' +
+                                'Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>'
+                            );
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, location);
+                    
+                    // Add to sidebar list
+                    var locationDiv = document.createElement('div');
+                    locationDiv.className = 'location';
+                    locationDiv.innerHTML = '<div class="high-income">' + location.name + '</div>' +
+                                          '<div>Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>';
+                    locationsList.appendChild(locationDiv);
+                }
+                
+                // Add markers for random places
+                var randomLocations = locations.filter(loc => loc.type === 'random');
+                for (var i = 0; i < randomLocations.length; i++) {
+                    var location = randomLocations[i];
+                    var marker = new google.maps.Marker({
+                        position: { lat: location.lat, lng: location.lng },
+                        map: map,
+                        title: location.name,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                    });
+                    
+                    bounds.extend(marker.getPosition());
+                    
+                    // Add info window
+                    (function(marker, location) {
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.setContent(
+                                '<div><strong>' + location.name + '</strong><br>' +
+                                'Type: Random<br>' +
+                                'Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>'
+                            );
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, location);
+                    
+                    // Add to sidebar list
+                    var locationDiv = document.createElement('div');
+                    locationDiv.className = 'location';
+                    locationDiv.innerHTML = '<div class="random">' + location.name + '</div>' +
+                                          '<div>Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>';
+                    locationsList.appendChild(locationDiv);
+                }
+                
+                map.fitBounds(bounds);
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+        </script>
+    </body>
+    </html>
+    

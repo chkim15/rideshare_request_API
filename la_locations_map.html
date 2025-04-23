@@ -1,0 +1,142 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>LA Locations Map</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>
+            #map {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .info-panel {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 1;
+                background-color: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 6px rgba(0,0,0,.3);
+                max-height: 80%;
+                overflow-y: auto;
+                max-width: 300px;
+            }
+            .location {
+                margin-bottom: 10px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 5px;
+            }
+            .high-income {
+                color: green;
+                font-weight: bold;
+            }
+            .random {
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div class="info-panel">
+            <h2>LA Locations</h2>
+            <div id="locations-list"></div>
+        </div>
+        <script>
+            var locations = [{"name": "Ritz Carlton, 900 W Olympic Blvd, LA", "lat": 34.04544986014083, "lng": -118.26660977509258, "type": "high_income"}, {"name": "Kirkland & Ellis 555 Flower St., LA", "lat": 34.05101706931945, "lng": -118.25779177509229, "type": "high_income"}, {"name": "1000 S. Grand Ave, LA", "lat": 34.04246123549105, "lng": -118.26103417509272, "type": "high_income"}, {"name": "333 S Hope St LA", "lat": 34.053068, "lng": -118.252985, "type": "high_income"}, {"name": "1198 Roberto Ln, Bel Air CA", "lat": 34.097417, "lng": -118.461621, "type": "high_income"}, {"name": "Bel Air Country Club 10768 Bellagio Road, LA", "lat": 34.082736, "lng": -118.457856, "type": "high_income"}, {"name": "Four Seasons Hotel at Beverly Hills", "lat": 34.068382, "lng": -118.411436, "type": "high_income"}, {"name": "The Grove 189 The Grove Drive, LA", "lat": 34.072346, "lng": -118.357879, "type": "high_income"}, {"name": "Chateau Marmont, 8221 W Sunset Blvd, LA", "lat": 34.097646, "lng": -118.368224, "type": "high_income"}, {"name": "Live Nation 9348 Civic Center Dr. Beverly Hills", "lat": 34.067718, "lng": -118.396809, "type": "high_income"}, {"name": "Century Towers Residences, 2220 Ave of the Stars, LA", "lat": 34.055936, "lng": -118.416835, "type": "high_income"}, {"name": "Beverly Hills Hotel 9641 W Sunset Blvd, Beverly Hills", "lat": 34.081427, "lng": -118.413878, "type": "high_income"}, {"name": "Hotel Bel Air 701 Stone Canyon Rd, LA", "lat": 34.08404, "lng": -118.442712, "type": "high_income"}, {"name": "1999 Ave of the Stars, LA", "lat": 34.059014, "lng": -118.417025, "type": "high_income"}, {"name": "Hotel Bel Air 701 Stone Canyon Rd, LA", "lat": 34.08404, "lng": -118.442712, "type": "high_income"}, {"name": "Live Nation 9348 Civic Center Dr. Beverly Hills", "lat": 34.067718, "lng": -118.396809, "type": "high_income"}, {"name": "W Hollywood, 6250 Hollywood Blvd., Hollywood", "lat": 34.101654, "lng": -118.325385, "type": "high_income"}, {"name": "Walt Disney 500 S. Buena Vista St. Burbank", "lat": 34.157511, "lng": -118.326323, "type": "high_income"}, {"name": "Chateau Marmont, 8221 W Sunset Blvd, LA", "lat": 34.097646, "lng": -118.368224, "type": "high_income"}, {"name": "IBM 348 Hauser Blvd, Los Angeles", "lat": 34.063952, "lng": -118.354022, "type": "high_income"}, {"name": "1413 S Oakhurst Dr, Los Angeles, CA 90035", "lat": 34.051874, "lng": -118.385193, "type": "random"}, {"name": "9725 Gregory Way, Beverly Hills, CA 90212", "lat": 34.067193, "lng": -118.401345, "type": "random"}, {"name": "1932 Holmby Ave, West Los Angeles", "lat": 34.048988, "lng": -118.438541, "type": "random"}, {"name": "2034 Cotner Ave F3, Los Angeles, CA 90025", "lat": 34.044198, "lng": -118.437762, "type": "random"}, {"name": "5880 Pickford St, Los Angeles, CA 90019", "lat": 34.045742, "lng": -118.368258, "type": "random"}, {"name": "1046 Redondo Blvd, Los Angeles, CA 90019", "lat": 34.053181, "lng": -118.353238, "type": "random"}, {"name": "229 S Mansfield Ave, Los Angeles, CA 90036", "lat": 34.071033, "lng": -118.339881, "type": "random"}, {"name": "800-898 N Stanley Ave, Los Angeles, CA 90046", "lat": 34.085604, "lng": -118.354021, "type": "random"}, {"name": "301 Irving Blvd. LA", "lat": 34.050555, "lng": -118.334708, "type": "random"}, {"name": "1000 Ridgeley Dr, LA", "lat": 34.055805, "lng": -118.340809, "type": "random"}, {"name": "3720 Halldale Ave, Los Angeles, CA 90018", "lat": 34.021069, "lng": -118.304417, "type": "random"}, {"name": "6608 Normandie Ave, Los Angeles", "lat": 33.979936, "lng": -118.300146, "type": "random"}, {"name": "1417 Orchard Ave., Los Angeles", "lat": 34.084507, "lng": -118.295599, "type": "random"}, {"name": "34.0352934, -118.2458547", "lat": 34.035293, "lng": -118.245855, "type": "random"}, {"name": "3411 Normandie Ave, Los Angeles", "lat": 34.025467, "lng": -118.300213, "type": "random"}, {"name": "1673 West Blvd, Los Angeles, CA 90019", "lat": 34.042202, "lng": -118.340811, "type": "random"}, {"name": "1112 N Hoover St, Los Angeles, CA 90029", "lat": 34.08979, "lng": -118.284626, "type": "random"}, {"name": "460 S Chevy Chase Dr, Glendale, CA 91205", "lat": 34.137257, "lng": -118.246733, "type": "random"}, {"name": "4655 W Washington Blvd, Los Angeles", "lat": 34.040202, "lng": -118.336601, "type": "random"}, {"name": "11730 Palms Blvd, Los Angeles", "lat": 34.018795, "lng": -118.431183, "type": "random"}];
+            
+            function initMap() {
+                var bounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12
+                });
+                
+                var infoWindow = new google.maps.InfoWindow();
+                var locationsList = document.getElementById('locations-list');
+                
+                // Add markers for high income places
+                var highIncomeLocations = locations.filter(loc => loc.type === 'high_income');
+                for (var i = 0; i < highIncomeLocations.length; i++) {
+                    var location = highIncomeLocations[i];
+                    var marker = new google.maps.Marker({
+                        position: { lat: location.lat, lng: location.lng },
+                        map: map,
+                        title: location.name,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    });
+                    
+                    bounds.extend(marker.getPosition());
+                    
+                    // Add info window 
+                    (function(marker, location) {
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.setContent(
+                                '<div><strong>' + location.name + '</strong><br>' +
+                                'Type: High Income<br>' +
+                                'Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>'
+                            );
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, location);
+                    
+                    // Add to sidebar list
+                    var locationDiv = document.createElement('div');
+                    locationDiv.className = 'location';
+                    locationDiv.innerHTML = '<div class="high-income">' + location.name + '</div>' +
+                                          '<div>Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>';
+                    locationsList.appendChild(locationDiv);
+                }
+                
+                // Add markers for random places
+                var randomLocations = locations.filter(loc => loc.type === 'random');
+                for (var i = 0; i < randomLocations.length; i++) {
+                    var location = randomLocations[i];
+                    var marker = new google.maps.Marker({
+                        position: { lat: location.lat, lng: location.lng },
+                        map: map,
+                        title: location.name,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                    });
+                    
+                    bounds.extend(marker.getPosition());
+                    
+                    // Add info window
+                    (function(marker, location) {
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.setContent(
+                                '<div><strong>' + location.name + '</strong><br>' +
+                                'Type: Random<br>' +
+                                'Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>'
+                            );
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, location);
+                    
+                    // Add to sidebar list
+                    var locationDiv = document.createElement('div');
+                    locationDiv.className = 'location';
+                    locationDiv.innerHTML = '<div class="random">' + location.name + '</div>' +
+                                          '<div>Lat: ' + location.lat.toFixed(6) + ', Lng: ' + location.lng.toFixed(6) + '</div>';
+                    locationsList.appendChild(locationDiv);
+                }
+                
+                map.fitBounds(bounds);
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+        </script>
+    </body>
+    </html>
+    

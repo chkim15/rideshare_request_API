@@ -27,8 +27,8 @@ logger = logging.getLogger(__name__)
 # Google Cloud Storage settings
 GCS_BUCKET_NAME = os.environ.get("GCS_BUCKET_NAME")
 
-# Sample 1: Prestigious Origin-Destination Pairs (Luxury residences/hotels to corporate HQs)
-SAMPLE1_PAIRS = [
+# LA1: LA's HIGH INCOME ORIGIN-DESTINATION PAIRS
+LA1_PAIRS = [
     {"id": 1, "origin_id": 1, "destination_id": 2},
     {"id": 2, "origin_id": 3, "destination_id": 4},
     {"id": 3, "origin_id": 5, "destination_id": 6},
@@ -41,31 +41,31 @@ SAMPLE1_PAIRS = [
     {"id": 10, "origin_id": 19, "destination_id": 20},
 ]
 
-SAMPLE1_PLACES = [
-    {"id": 1, "name": "15 Central Park West", "lat": 40.769000, "lng": -73.981400},
-    {"id": 2, "name": "Goldman Sachs HQ", "lat": 40.714700, "lng": -74.013600},
-    {"id": 3, "name": "Central Park Tower", "lat": 40.765900, "lng": -73.982000},
-    {"id": 4, "name": "JP Morgan HQ", "lat": 40.755600, "lng": -73.977500},
-    {"id": 5, "name": "432 Park Avenue", "lat": 40.761600, "lng": -73.971800},
-    {"id": 6, "name": "CitiGroup HQ", "lat": 40.720600, "lng": -74.012800},
-    {"id": 7, "name": "15 Hudson Yards", "lat": 40.753600, "lng": -74.002200},
-    {"id": 8, "name": "McKinsey (WTC)", "lat": 40.712800, "lng": -74.011900},
-    {"id": 9, "name": "One57 (157 W 57th St)", "lat": 40.765300, "lng": -73.979000},
-    {"id": 10, "name": "BCG (Hudson Yards)", "lat": 40.753600, "lng": -74.002200},
-    {"id": 11, "name": "220 Central Park South", "lat": 40.766700, "lng": -73.980900},
-    {"id": 12, "name": "Google NYC", "lat": 40.740800, "lng": -74.003300},
-    {"id": 13, "name": "Four Seasons Hotel New York", "lat": 40.762600, "lng": -73.969700},
-    {"id": 14, "name": "Skadden Arps", "lat": 40.751700, "lng": -73.997200},
-    {"id": 15, "name": "The Beekman (Thompson Hotel)", "lat": 40.711200, "lng": -74.006600},
-    {"id": 16, "name": "Morgan Stanley HQ", "lat": 40.758300, "lng": -73.968600},
-    {"id": 17, "name": "The St. Regis New York", "lat": 40.761600, "lng": -73.974400},
-    {"id": 18, "name": "AIG", "lat": 40.705600, "lng": -74.009100},
-    {"id": 19, "name": "Four Seasons Hotel New York Downtown", "lat": 40.712600, "lng": -74.009700},
-    {"id": 20, "name": "Bain & Company", "lat": 40.756200, "lng": -73.981100},
+LA1_PLACES = [
+    {"id": 1, "name": "Ritz Carlton, 900 W Olympic Blvd, LA", "lat": 34.04544986014083, "lng": -118.26660977509258},
+    {"id": 2, "name": "Kirkland & Ellis 555 Flower St., LA", "lat": 34.05101706931945, "lng": -118.25779177509229},
+    {"id": 3, "name": "1000 S. Grand Ave, LA", "lat": 34.04246123549105, "lng": -118.26103417509272},
+    {"id": 4, "name": "333 S Hope St LA", "lat": 34.053068, "lng": -118.252985},
+    {"id": 5, "name": "1198 Roberto Ln, Bel Air CA", "lat": 34.097417, "lng": -118.461621},
+    {"id": 6, "name": "Bel Air Country Club 10768 Bellagio Road, LA", "lat": 34.079513798810254, "lng": -118.4502622174189},
+    {"id": 7, "name": "Four Seasons Hotel at Beverly Hills", "lat": 34.073142646957265, "lng": -118.38923370392745},
+    {"id": 8, "name": "The Grove 189 The Grove Drive, LA", "lat": 34.07209175317847, "lng": -118.35750567509143},
+    {"id": 9, "name": "Chateau Marmont, 8221 W Sunset Blvd, LA", "lat": 34.09834841616102, "lng": -118.36848287509024},
+    {"id": 10, "name": "Live Nation 9348 Civic Center Dr. Beverly Hills", "lat": 34.074530158923814, "lng": -118.3986892364688},
+    {"id": 11, "name": "Century Towers Residences, 2220 Ave of the Stars, LA", "lat": 34.05224295602889, "lng": -118.40877668858411},
+    {"id": 12, "name": "Beverly Hills Hotel 9641 W Sunset Blvd, Beverly Hills", "lat": 34.081968921589876, "lng": -118.413392275091},
+    {"id": 13, "name": "Hotel Bel Air 701 Stone Canyon Rd, LA", "lat": 34.086738838609214, "lng": -118.44639258072958},
+    {"id": 14, "name": "1999 Ave of the Stars, LA", "lat": 34.05902098805131, "lng": -118.41711034625591},
+    {"id": 15, "name": "Hotel Bel Air 701 Stone Canyon Rd, LA", "lat": 34.086738838609214, "lng": -118.44639258072958},
+    {"id": 16, "name": "Live Nation 9348 Civic Center Dr. Beverly Hills", "lat": 34.07455681930882, "lng": -118.39873215181318},
+    {"id": 17, "name": "W Hollywood, 6250 Hollywood Blvd., Hollywood", "lat": 34.101082649373154, "lng": -118.32582818858184},
+    {"id": 18, "name": "Walt Disney 500 S. Buena Vista St. Burbank", "lat": 34.1562691206309, "lng": -118.325189003924},
+    {"id": 19, "name": "Chateau Marmont, 8221 W Sunset Blvd, LA", "lat": 34.098357300457344, "lng": -118.36846141741805},
+    {"id": 20, "name": "IBM 348 Hauser Blvd, Los Angeles", "lat": 34.0694950578102, "lng": -118.3505841462555},
 ]
 
-# Sample 2: Random Manhattan locations with nearly identical distances
-SAMPLE2_PAIRS = [
+# LA2: LA's RANDOM ORIGIN-DESTINATION PAIRS
+LA2_PAIRS = [
     {"id": 1, "origin_id": 1, "destination_id": 2},
     {"id": 2, "origin_id": 3, "destination_id": 4},
     {"id": 3, "origin_id": 5, "destination_id": 6},
@@ -78,51 +78,101 @@ SAMPLE2_PAIRS = [
     {"id": 10, "origin_id": 19, "destination_id": 20},
 ]
 
-SAMPLE2_PLACES = [
-    {"id": 1, "name": "Random Origin 1", "lat": 40.794705, "lng": -73.971795},
-    {"id": 2, "name": "Random Destination 1", "lat": 40.739203, "lng": -74.000226},
-    {"id": 3, "name": "Random Origin 2", "lat": 40.721926, "lng": -74.003187},
-    {"id": 4, "name": "Random Destination 2", "lat": 40.711705, "lng": -74.007952},
-    {"id": 5, "name": "Random Origin 3", "lat": 40.744180, "lng": -73.998954},
-    {"id": 6, "name": "Random Destination 3", "lat": 40.782621, "lng": -73.954126},
-    {"id": 7, "name": "Random Origin 4", "lat": 40.710470, "lng": -74.007748},
-    {"id": 8, "name": "Random Destination 4", "lat": 40.750068, "lng": -73.991665},
-    {"id": 9, "name": "Random Origin 5", "lat": 40.771169, "lng": -73.957614},
-    {"id": 10, "name": "Random Destination 5", "lat": 40.786449, "lng": -73.976858},
-    {"id": 11, "name": "Random Origin 6", "lat": 40.716300, "lng": -74.004792},
-    {"id": 12, "name": "Random Destination 6", "lat": 40.747133, "lng": -74.000472},
-    {"id": 13, "name": "Random Origin 7", "lat": 40.706267, "lng": -74.012561},
-    {"id": 14, "name": "Random Destination 7", "lat": 40.726520, "lng": -73.996706},
-    {"id": 15, "name": "Random Origin 8", "lat": 40.782064, "lng": -73.956258},
-    {"id": 16, "name": "Random Destination 8", "lat": 40.737330, "lng": -73.998871},
-    {"id": 17, "name": "Random Origin 9", "lat": 40.804611, "lng": -73.954223},
-    {"id": 18, "name": "Random Destination 9", "lat": 40.749035, "lng": -73.989995},
-    {"id": 19, "name": "Random Origin 10", "lat": 40.780999, "lng": -73.946376},
-    {"id": 20, "name": "Random Destination 10", "lat": 40.748841, "lng": -73.993437},
+LA2_PLACES = [
+    {"id": 1, "name": "1413 S Oakhurst Dr, Los Angeles, CA 90035", "lat": 34.05497468370488, "lng": -118.39099984625615},
+    {"id": 2, "name": "9725 Gregory Way, Beverly Hills, CA 90212", "lat": 34.062398158552796, "lng": -118.40703176160011},
+    {"id": 3, "name": "1932 Holmby Ave, West Los Angeles", "lat": 34.05402154126493, "lng": -118.4238958327644},
+    {"id": 4, "name": "2034 Cotner Ave F3, Los Angeles, CA 90025", "lat": 34.0417150975965, "lng": -118.44082083276484},
+    {"id": 5, "name": "5880 Pickford St, Los Angeles, CA 90019", "lat": 34.04758376943641, "lng": -118.36812777509247},
+    {"id": 6, "name": "1046 Redondo Blvd, Los Angeles, CA 90019", "lat": 34.05587448210048, "lng": -118.34580469043648},
+    {"id": 7, "name": "229 S Mansfield Ave, Los Angeles, CA 90036", "lat": 34.07031550733673, "lng": -118.34102593276367},
+    {"id": 8, "name": "800-898 N Stanley Ave, Los Angeles, CA 90046", "lat": 34.08565254334001, "lng": -118.35611504625471},
+    {"id": 9, "name": "301 Irving Blvd. LA", "lat": 34.076549358626764, "lng": -118.31897608858301},
+    {"id": 10, "name": "1000 Ridgeley Dr, LA", "lat": 34.05729893404654, "lng": -118.35221737509205},
+    {"id": 11, "name": "3720 Halldale Ave, Los Angeles, CA 90018", "lat": 34.020337667957605, "lng": -118.30274610392964},
+    {"id": 12, "name": "6608 Normandie Ave, Los Angeles", "lat": 33.97899782857493, "lng": -118.30003113276743},
+    {"id": 13, "name": "1417 Orchard Ave., Los Angeles", "lat": 34.04589999988305, "lng": -118.28867446160076},
+    {"id": 14, "name": "34.0352934, -118.2458547", "lat": 34.0352934, "lng": -118.2458547},
+    {"id": 15, "name": "3411 Normandie Ave, Los Angeles", "lat": 34.025271136645635, "lng": -118.3004307327655},
+    {"id": 16, "name": "1673 West Blvd, Los Angeles, CA 90019", "lat": 34.043778673780096, "lng": -118.33590223276474},
+    {"id": 17, "name": "1112 N Hoover St, Los Angeles, CA 90029", "lat": 34.09156558848393, "lng": -118.28431831741841},
+    {"id": 18, "name": "460 S Chevy Chase Dr, Glendale, CA 91205", "lat": 34.1410471695555, "lng": -118.23919080392464},
+    {"id": 19, "name": "4655 W Washington Blvd, Los Angeles", "lat": 34.040150021784946, "lng": -118.34140303946852},
+    {"id": 20, "name": "11730 Palms Blvd, Los Angeles", "lat": 34.01565611870629, "lng": -118.43111784625765},
 ]
 
-# Sample 3: NYC Residential to Airport Routes
-SAMPLE3_PAIRS = [
-    {"id": 1, "origin_id": 1, "destination_id": 2},    # Columbus Ave to JFK
-    {"id": 2, "origin_id": 1, "destination_id": 3},    # Columbus Ave to Newark
-    {"id": 3, "origin_id": 1, "destination_id": 4},    # Columbus Ave to LaGuardia
-    {"id": 4, "origin_id": 5, "destination_id": 2},    # Central Park West to JFK
-    {"id": 5, "origin_id": 5, "destination_id": 3},    # Central Park West to Newark
-    {"id": 6, "origin_id": 5, "destination_id": 4},    # Central Park West to LaGuardia
-    {"id": 7, "origin_id": 2, "destination_id": 1},    # JFK to Columbus Ave
-    {"id": 8, "origin_id": 3, "destination_id": 1},    # Newark to Columbus Ave
-    {"id": 9, "origin_id": 4, "destination_id": 1},    # LaGuardia to Columbus Ave
-    {"id": 10, "origin_id": 2, "destination_id": 5},   # JFK to Central Park West
-    {"id": 11, "origin_id": 3, "destination_id": 5},   # Newark to Central Park West
-    {"id": 12, "origin_id": 4, "destination_id": 5},   # LaGuardia to Central Park West
+# Chicago1: Chicago's HIGH INCOME ORIGIN-DESTINATION PAIRS
+CHICAGO1_PAIRS = [
+    {"id": 1, "origin_id": 1, "destination_id": 2},
+    {"id": 2, "origin_id": 3, "destination_id": 4},
+    {"id": 3, "origin_id": 5, "destination_id": 6},
+    {"id": 4, "origin_id": 7, "destination_id": 8},
+    {"id": 5, "origin_id": 9, "destination_id": 10},
+    {"id": 6, "origin_id": 11, "destination_id": 12},
+    {"id": 7, "origin_id": 13, "destination_id": 14},
+    {"id": 8, "origin_id": 15, "destination_id": 16},
+    {"id": 9, "origin_id": 17, "destination_id": 18},
+    {"id": 10, "origin_id": 19, "destination_id": 20},
 ]
 
-SAMPLE3_PLACES = [
-    {"id": 1, "name": "795 Columbus Ave", "lat": 40.793682, "lng": -73.962427},
-    {"id": 2, "name": "JFK Airport", "lat": 40.641311, "lng": -73.778139},
-    {"id": 3, "name": "Newark Airport", "lat": 40.689531, "lng": -74.174462},
-    {"id": 4, "name": "LaGuardia Airport", "lat": 40.775997, "lng": -73.872457},
-    {"id": 5, "name": "15 Central Park West", "lat": 40.769000, "lng": -73.981400},
+CHICAGO1_PLACES = [
+    {"id": 1, "name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.896034648849415, "lng": -87.6250967458956},
+    {"id": 2, "name": "JP Morgan, 10 S Dearborn St., Chicago", "lat": 41.88184132959059, "lng": -87.62962990171587},
+    {"id": 3, "name": "Park Hyatt, 108 East Superior Street, Chicago", "lat": 41.89613500694018, "lng": -87.62507620356772},
+    {"id": 4, "name": "CME Group, 20 South Wacker Drive, Chicago", "lat": 41.88130482652534, "lng": -87.63725027473248},
+    {"id": 5, "name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.896034648849415, "lng": -87.6250967458956},
+    {"id": 6, "name": "233 S Wacker Dr, Chicago, IL 60606", "lat": 41.878984906479424, "lng": -87.63590067473257},
+    {"id": 7, "name": "Four Seasons Hotel, 120 East Delaware Place, Chicago", "lat": 41.89947035629683, "lng": -87.6251379170593},
+    {"id": 8, "name": "Mondelez Intl., 905 W Fulton Market, Chicago", "lat": 41.88677945463177, "lng": -87.65009791705995},
+    {"id": 9, "name": "850 North Lake Shore Drive, Chicago", "lat": 41.89841398733954, "lng": -87.61873897658424},
+    {"id": 10, "name": "234 S Wacker Dr, Chicago, IL 60606", "lat": 41.87850212543636, "lng": -87.63704298822427},
+    {"id": 11, "name": "Peninsula Hotel, 108 East Superior Street, Chicago", "lat": 41.896034648849415, "lng": -87.6250967458956},
+    {"id": 12, "name": "McDonald's 110 N Carpenter St, Chicago", "lat": 41.88333850044072, "lng": -87.65339219007666},
+    {"id": 13, "name": "1837 North Fremont St., Chicago", "lat": 41.91497577599523, "lng": -87.65053140356683},
+    {"id": 14, "name": "CME Group, 20 S Wacker Dr, Chicago, IL 60606", "lat": 41.88132080239109, "lng": -87.63726100356858},
+    {"id": 15, "name": "2350 North Orchard St., Chicago", "lat": 41.92521402553522, "lng": -87.64654221891071},
+    {"id": 16, "name": "233 S Wacker Dr, Chicago, IL 60606", "lat": 41.878984906479424, "lng": -87.63590067473257},
+    {"id": 17, "name": "2350 North Orchard St., Chicago", "lat": 41.92521402553522, "lng": -87.64654221891071},
+    {"id": 18, "name": "Jones, Day 10 N Wacker Drive, Chicago", "lat": 41.88228200070876, "lng": -87.63721798822417},
+    {"id": 19, "name": "Marriott Marquis", "lat": 41.85413044996789, "lng": -87.62054703240601},
+    {"id": 20, "name": "2350 North Orchard St., Chicago", "lat": 41.92525393773527, "lng": -87.64648857473024},
+]
+
+# Chicago2: Chicago's RANDOM ORIGIN-DESTINATION PAIRS
+CHICAGO2_PAIRS = [
+    {"id": 1, "origin_id": 1, "destination_id": 2},
+    {"id": 2, "origin_id": 3, "destination_id": 4},
+    {"id": 3, "origin_id": 5, "destination_id": 6},
+    {"id": 4, "origin_id": 7, "destination_id": 8},
+    {"id": 5, "origin_id": 9, "destination_id": 10},
+    {"id": 6, "origin_id": 11, "destination_id": 12},
+    {"id": 7, "origin_id": 13, "destination_id": 14},
+    {"id": 8, "origin_id": 15, "destination_id": 16},
+    {"id": 9, "origin_id": 17, "destination_id": 18},
+    {"id": 10, "origin_id": 19, "destination_id": 20},
+]
+
+CHICAGO2_PLACES = [
+    {"id": 1, "name": "120 S State St #205, Chicago", "lat": 41.88100946689491, "lng": -87.62723285938812},
+    {"id": 2, "name": "920 W Randolph St, Chicago", "lat": 41.8846932964883, "lng": -87.65068973240444},
+    {"id": 3, "name": "421 West Huron St., Chicago", "lat": 41.89460309687061, "lng": -87.6395318458957},
+    {"id": 4, "name": "One S. Dearborn S., Chicago", "lat": 41.8817566137375, "lng": -87.62859023637145},
+    {"id": 5, "name": "1950 West 21 Street, Chicago", "lat": 41.85437143217611, "lng": -87.6754902900782},
+    {"id": 6, "name": "1002 S Racine Ave, Chicago", "lat": 41.869241402443905, "lng": -87.65675640356918},
+    {"id": 7, "name": "698-664 N Hoyne Ave, Chicago", "lat": 41.894203711528725, "lng": -87.6794165170596},
+    {"id": 8, "name": "815-899 N Lawndale Ave, Chicago", "lat": 41.896149879100456, "lng": -87.71852289007606},
+    {"id": 9, "name": "1063 W. Polk St., Chicago", "lat": 41.87176899738908, "lng": -87.65363523240511},
+    {"id": 10, "name": "37 E Madison St, Chicago", "lat": 41.882356230106865, "lng": -87.62793380171584},
+    {"id": 11, "name": "535-599 N Paulina St, Chicago", "lat": 41.89226151614296, "lng": -87.66943541705969},
+    {"id": 12, "name": "4164-4198 W Augusta Blvd, Chicago", "lat": 41.89912737128119, "lng": -87.73045155938718},
+    {"id": 13, "name": "342 W Carroll Ave, Chicago", "lat": 41.888021251992114, "lng": -87.66285116124038},
+    {"id": 14, "name": "1479 S Clark St, Chicago", "lat": 41.86221428750783, "lng": -87.63031354774995},
+    {"id": 15, "name": "185 W Washington St, Chicago", "lat": 41.8831619623203, "lng": -87.63369137473234},
+    {"id": 16, "name": "2435 W Roosevelt Rd, Chicago, IL 60608", "lat": 41.86662138517686, "lng": -87.68747987658581},
+    {"id": 17, "name": "2533 W Pope John Paul II Dr, Chicago", "lat": 41.815578305863475, "lng": -87.68849473240793},
+    {"id": 18, "name": "1460 S Clark St, Chicago", "lat": 41.862650115623964, "lng": -87.63027090356947},
+    {"id": 19, "name": "3240 N Kimball Ave, Chicago", "lat": 41.94101569785078, "lng": -87.71280727472941},
+    {"id": 20, "name": "615 W. Madison Ave., Chicago", "lat": 41.88184381359574, "lng": -87.64318027473243},
 ]
 
 def initialize_gcs_client():
@@ -338,8 +388,8 @@ def save_results_to_csv(client, data, sample_type, pickup_name, dest_name):
         "wait_min_seconds", "wait_max_seconds", 
         "trip_seconds", "distance_meters", "surge_multiplier"
     ]
-    
-    # Download existing CSV
+
+# Download existing CSV
     existing_csv_data = download_csv_from_gcs(client, csv_filename)
     
     # Append new data and upload
@@ -410,38 +460,70 @@ def collect_all_samples():
     
     # Process pairs with error handling and splits
     try:
-        # Process Sample 1 - Prestigious routes
-        logger.info("Starting Sample 1 collection...")
+        # Process LA1 - LA HIGH INCOME routes
+        logger.info("Starting LA1 (HIGH INCOME) collection...")
         
-        for i, pair in enumerate(SAMPLE1_PAIRS):
+        for i, pair in enumerate(LA1_PAIRS):
             try:
-                process_pair(api_key, api_secret, gcs_client, "Sample1", pair, SAMPLE1_PLACES)
-                logger.info(f"Successfully processed Sample1 pair {pair['id']} ({i+1}/{len(SAMPLE1_PAIRS)})")
+                process_pair(api_key, api_secret, gcs_client, "LA1", pair, LA1_PLACES)
+                logger.info(f"Successfully processed LA1 pair {pair['id']} ({i+1}/{len(LA1_PAIRS)})")
             except Exception as e:
-                logger.error(f"Error processing Sample1 pair {pair['id']}: {e}")
+                logger.error(f"Error processing LA1 pair {pair['id']}: {e}")
                 # Continue with next pair instead of exiting
                 continue
         
-        # Add a longer delay between Sample 1 and Sample 2 to recover from potential rate limiting
-        logger.info("Completed Sample 1. Waiting 60 seconds before starting Sample 2...")
+        # Add a delay between samples to recover from potential rate limiting
+        logger.info("Completed LA1. Waiting 60 seconds before starting LA2...")
         time.sleep(60)
         
-        # Process Sample 2 - Random routes with similar distances
-        logger.info("Starting Sample 2 collection...")
+        # Process LA2 - LA RANDOM routes
+        logger.info("Starting LA2 (RANDOM) collection...")
         
-        for i, pair in enumerate(SAMPLE2_PAIRS):
+        for i, pair in enumerate(LA2_PAIRS):
             try:
-                process_pair(api_key, api_secret, gcs_client, "Sample2", pair, SAMPLE2_PLACES)
-                logger.info(f"Successfully processed Sample2 pair {pair['id']} ({i+1}/{len(SAMPLE2_PAIRS)})")
+                process_pair(api_key, api_secret, gcs_client, "LA2", pair, LA2_PLACES)
+                logger.info(f"Successfully processed LA2 pair {pair['id']} ({i+1}/{len(LA2_PAIRS)})")
             except Exception as e:
-                logger.error(f"Error processing Sample2 pair {pair['id']}: {e}")
+                logger.error(f"Error processing LA2 pair {pair['id']}: {e}")
                 # Continue with next pair instead of exiting
                 continue
-
-        # Add this after processing Sample 2
-        logger.info("Completed Sample 2. Waiting 60 seconds before starting Sample 3...")
+        
+        # Add a delay between LA and Chicago samples
+        logger.info("Completed LA2. Waiting 60 seconds before starting Chicago1...")
         time.sleep(60)
-
+        
+        # Process Chicago1 - Chicago HIGH INCOME routes
+        logger.info("Starting Chicago1 (HIGH INCOME) collection...")
+        
+        for i, pair in enumerate(CHICAGO1_PAIRS):
+            try:
+                process_pair(api_key, api_secret, gcs_client, "Chicago1", pair, CHICAGO1_PLACES)
+                logger.info(f"Successfully processed Chicago1 pair {pair['id']} ({i+1}/{len(CHICAGO1_PAIRS)})")
+            except Exception as e:
+                logger.error(f"Error processing Chicago1 pair {pair['id']}: {e}")
+                # Continue with next pair instead of exiting
+                continue
+        
+        # Add a delay between Chicago1 and Chicago2
+        logger.info("Completed Chicago1. Waiting 60 seconds before starting Chicago2...")
+        time.sleep(60)
+        
+        # Process Chicago2 - Chicago RANDOM routes
+        logger.info("Starting Chicago2 (RANDOM) collection...")
+        
+        for i, pair in enumerate(CHICAGO2_PAIRS):
+            try:
+                process_pair(api_key, api_secret, gcs_client, "Chicago2", pair, CHICAGO2_PLACES)
+                logger.info(f"Successfully processed Chicago2 pair {pair['id']} ({i+1}/{len(CHICAGO2_PAIRS)})")
+            except Exception as e:
+                logger.error(f"Error processing Chicago2 pair {pair['id']}: {e}")
+                # Continue with next pair instead of exiting
+                continue
+        
+        # Add a delay before Sample 3
+        logger.info("Completed Chicago2. Waiting 60 seconds before starting Sample3...")
+        time.sleep(60)
+        
         # Process Sample 3 - NYC Residential to Airport Routes
         logger.info("Starting Sample 3 collection...")
 
